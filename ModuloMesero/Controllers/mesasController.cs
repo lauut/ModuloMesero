@@ -14,9 +14,9 @@ namespace ModuloMesero.Controllers
         }
         public IActionResult Index()
         {
-        //    var ListaDeMesas = (from m in _dulceSaborDbContext.mesas select m).ToList();
+            var ListaDeMesas = (from m in _dulceSaborDbContext.mesas select m).ToList();
 
-        //    ViewData["ListadoDeMesas"] = new SelectList(ListaDeMesas, "id_mesa", "cantidad_personas", "id_estado", "nombre_mesa");
+            ViewData["ListaDeMesas"] =ListaDeMesas;
 
             return View();
         }

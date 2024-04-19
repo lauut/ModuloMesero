@@ -4,23 +4,32 @@
 @{
 }
 
-<div class="row-cols-md-3">
+<div class="row-cols-md-3 fl">
 
-    <div style="text-align: center; border-color: #76AC6D; border: 1px">
+    @foreach (var mesa in (IEnumerable<dynamic>)ViewData["ListaDeMesas"])
+    {
+        <div style="text-align: center; border-color: #76AC6D; border: 1px; margin: 10px">
 
-        <div class="text-light" style="background-color: #76AC6D; margin:0%; height: 30px; text-align: center"><p style="margin:0%">Mesa 1</p></div>
-       
+            <div class="text-light" style="background-color: #76AC6D; margin:0%; height: 30px; text-align: center"><p style="margin:0%">@mesa.nombre_mesa</p></div>
 
-        <table class="table" style="border-color: #76AC6D; border: 1px">
-            <tr style="border-color: #76AC6D">
-                <th>Estado:</th>
-                <th>Disponible</th>
-            </tr>
-        </table>
 
-        <button type="button" class="btn text-light" style="background-color: #76AC6D" asp-area="" asp-controller="" asp-action="">Asignar</button>
+            <table class="table" style="border-color: #76AC6D; border: 1px">
+                <tr style="border-color: #76AC6D">
+                    <th>Estado:</th>
 
-    </div>
+                    @if (mesa.id_estado == 1)
+                    {
+                        <th>Disponible</th>
+                    }
+                    @if (mesa.id_estado == 2)
+                    {
+                        <th>No Disponible</th>
+                    }
+                </tr>
+            </table>
 
+            <button type="button" class="btn text-light" style="background-color: #76AC6D" asp-area="" asp-controller="" asp-action="">Asignar</button>
+        </div>
+    }
 
 </div>
