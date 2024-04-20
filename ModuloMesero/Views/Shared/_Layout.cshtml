@@ -25,8 +25,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-sucess" asp-area="" asp-controller="cuenta" asp-action="Index">Cuenta</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-sucess" asp-area="" asp-controller="Detalle_Pedido" asp-action="Index">Detalle del Pedido</a>
+                        </li>
                     </ul>
+                    
+                        <form class="d-flex" role="search">
+                            <button type="button" class="btn custom-button btn-secondary btn-sm custom-margin">Detalle Pedidos</button>
+                            <button type="button" class="btn custom-button btn-secondary btn-sm custom-margin">Mesas</button>
+                            <button type="button" class="btn btn_2 btn-secondary btn-sm custom-margin">Cuentas</button>
+
+                        </form>
+
+                    
                 </div>
+                
             </div>
         </nav>
     </header>
@@ -45,5 +58,43 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    @*Aquí comienzan los style*@
+
+    <style>
+        .custom-margin {
+            margin-right: 15px;
+            margin-left: 15px;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+    </style>
+
+    <style>
+        .custom-img {
+            width: 200px; /* Establecer ancho */
+            height: 150px; /* Establecer alto */
+        }
+    </style>
+
+    <style>
+        .text-custom {
+            color: #426B1F; /* Puedes cambiar este valor hexadecimal por cualquier color deseado */
+        }
+    </style>
+
+    <style>
+        .custom-button {
+            background-color: #76AC6D;
+        }
+    </style>
+
+    <style>
+        .btn_2 {
+            background-color: #426B1F;
+        }
+    </style>
+
+    @*Aquí finalizan los style*@
 </body>
 </html>
