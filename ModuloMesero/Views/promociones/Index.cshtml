@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h3>Promociones:</h3>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var promo in (IEnumerable<dynamic>)ViewData["listprom"])
+    {
+        <div class="col">
+            <div class="card h-100">
+                @* <img src="@promo.ImageUrl" class="card-img-top" alt="@promo.Title"> *@
+                <div class="card-body">
+                    <h5 class="card-title">@promo.nombre</h5>
+                    <p class="card-text"> @promo.descripcion</p>
+                    <p class="card-text"> $: @promo.precio</p>
+                    <button type="submit" class="btn btn-success left">+</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
