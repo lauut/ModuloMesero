@@ -3,23 +3,24 @@
 *@
 @{
 }
-
-
-
+@model ModuloMesero.Models.mesas
+<div>
+    <h1 class="text-dark" style="text-decoration-thickness:auto">Crear Cuenta: @Model.nombre_mesa</h1>
+    <hr style="color: black; background-color: black; width:100%;" />
+</div>
 <div style="display: flex; justify-content: center;">
-    <form class="form-horizontal">
-        <label>Mesa :</label>
+    <form class="form-horizontal" asp-action="CrearCuenta">
         <div class="form-group">
-            <label class="col-lg-4 control-label">Nombre:</label>
+            <div class="col-lg-4">@Html.Label("lblNombre", "Nombre")</div>
             <div class="mb-3">
-                <input type="text" class="form-control" name="nombre" />
+                @Html.TextBox("Nombre", "", new { @class = "form-control" })
             </div>
         </div>
-
+        
         <div class="form-group">
-            <label class="mb-3 control-label">Cantidad de personas:</label>
+            <div class="col-lg-8">@Html.Label("lblCantidad_Personas", "Cantidad de personas")</div>
             <div class="mb-3">
-                <input type="text" class="form-control" name="apellido" />
+                @Html.TextBox("Cantidad_Personas", "", new { @class = "form-control" })
             </div>
         </div>
         <br />
