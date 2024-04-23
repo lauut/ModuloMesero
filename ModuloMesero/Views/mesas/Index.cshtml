@@ -22,7 +22,7 @@
                     </tr>
                 </table>
 
-                <button type="button" class="btn text-light m-4" style="background-color: #76AC6D"><a style="text-decoration: none; color: inherit;" asp-area="" asp-controller="cuenta" asp-action="Index">Comenzar</a></button>
+                <button type="button" class="btn text-light m-4" style="background-color: #76AC6D"><a style="text-decoration: none; color: inherit;" asp-area="" asp-controller="cuenta" asp-action="Index" asp-route-id_mesa="@mesa.id_mesa">Comenzar</a></button>
             </div>
         }
         @if (mesa.id_estado == 2)
