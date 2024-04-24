@@ -9,7 +9,7 @@
     <hr style="color: black; background-color: black; width:100%;" />
 </div>
 <div style="display: flex; justify-content: center;">
-    <form class="form-horizontal" asp-action="CrearCuenta">
+    <form class="form-horizontal" asp-action="CrearCuenta" asp-route-id_mesa="@Model.id_mesa">
         <div class="form-group">
             <div class="col-lg-4">@Html.Label("lblNombre", "Nombre")</div>
             <div class="mb-3">
