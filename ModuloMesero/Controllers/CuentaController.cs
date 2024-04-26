@@ -54,8 +54,7 @@ namespace ModuloMesero.Controllers
             _context.Add(nuevacuenta);
             _context.SaveChanges();
 
-            int id_cuenta = nuevacuenta.Id_cuenta;
-            return RedirectToAction("Index", "Detalle_Pedido", new { idCuenta = id_cuenta });
+            return RedirectToAction("Index", "Detalle_Pedido", new { id_mesa = id_mesa });
         }
 
     }

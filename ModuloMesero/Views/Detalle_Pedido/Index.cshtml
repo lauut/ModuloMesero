@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Dulce Sabor";
 }
+@model ModuloMesero.Models.Cuenta
 
 <!doctype html>
 <html lang="en">
@@ -13,7 +14,7 @@
 <body>
     <header>
         <div class="border-bottom">
-            <h1>Cuenta: Mesa 1</h1>
+            <h1>Cuenta: @Model.Nombre</h1>
         </div>
         
     </header>
