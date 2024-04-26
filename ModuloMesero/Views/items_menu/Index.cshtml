@@ -1,0 +1,155 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var entradas = ViewData["Entradas"];
+    var platosFuertes = ViewData["PlatosFuertes"];
+    var bebidas = ViewData["Bebidas"];
+    var postres = ViewData["Postres"];
+}
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+
+<div style="display: flex;">
+    <button class="btn btn-succes" id="btnEntradas">Entradas</button>
+    <button class="btn btn-succes" id="btnPlatosFuertes">Platos Fuertes</button>
+    <button class="btn btn-success" id="btnBebidas">Bebidas</button>
+    <button class="btn btn-succes" id="btnPostres">Postres</button>
+</div>
+
+<div id="divEntradas" style="display: none;">
+    @if (entradas != null)
+    {
+        <h3>Entradas: </h3>
+        <div class="card mb-3" style="max-width: 540px;">
+            @foreach (var entrada in (IEnumerable<dynamic>)ViewData["Entradas"])
+            {
+                <div class="row g-0">
+                    <div class="col-md-4 border-success bg-light">
+                        @* <img src="..." class="img-fluid rounded-start" alt="..."> *@
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@entrada.nombre</h5>
+                            <p class="card-text">@entrada.descripcion</p>
+                            <p class="card-text"><b>$: @entrada.precio</b> </p>
+                            <button type="submit" class="btn btn-success left">+</button>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    }
+</div>
+
+<div id="divPlatosFuertes" style="display: none;">
+    @if (platosFuertes != null)
+    {
+        <h3>Platos Fuertes </h3>
+        <div class="card mb-3" style="max-width: 540px;">
+            @foreach (var platof in (IEnumerable<dynamic>)ViewData["PlatosFuertes"])
+            {
+                <div class="row g-0">
+                    <div class="col-md-4 border-success bg-light">
+                        @* <img src="..." class="img-fluid rounded-start" alt="..."> *@
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@platof.nombre</h5>
+                            <p class="card-text">@platof.descripcion</p>
+                            <p class="card-text"><b>$: @platof.precio</b> </p>
+                            <button type="submit" class="btn btn-success left">+</button>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    }
+</div>
+
+<div id="divBebidas" style="display: none;">
+    @if (bebidas != null)
+    {
+        <h3>Bebidas: </h3>
+        <div class="card mb-3" style="max-width: 540px;">
+            @foreach (var bebida in (IEnumerable<dynamic>)ViewData["Bebidas"])
+            {
+                <div class="row g-0">
+                    <div class="col-md-4 border-success bg-light">
+                        @* <img src="..." class="img-fluid rounded-start" alt="..."> *@
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@bebida.nombre</h5>
+                            <p class="card-text">@bebida.descripcion</p>
+                            <p class="card-text"><b>$: @bebida.precio</b> </p>
+                            <button type="submit" class="btn btn-success left">+</button>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    }
+</div>
+
+<div id="divPostres" style="display: none;">
+    @if (postres != null)
+    {
+        <h3>Postres: </h3>
+        <div class="card mb-3" style="max-width: 540px;">
+            @foreach (var postre in (IEnumerable<dynamic>)ViewData["Postres"])
+            {
+                <div class="row g-0">
+                    <div class="col-md-4 border-success bg-light">
+                        @* <img src="..." class="img-fluid rounded-start" alt="..."> *@
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@postre.nombre</h5>
+                            <p class="card-text">@postre.descripcion</p>
+                            <p class="card-text"><b>$: @postre.precio</b> </p>
+                            <button type="submit" class="btn btn-success left">+</button>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#btnEntradas").click(function () {
+            mostrarTarjetas("divEntradas");
+        });
+
+        $("#btnPlatosFuertes").click(function () {
+            mostrarTarjetas("divPlatosFuertes");
+        });
+
+        $("#btnBebidas").click(function () {
+            mostrarTarjetas("divBebidas");
+        });
+
+        $("#btnPostres").click(function () {
+            mostrarTarjetas("divPostres");
+        });
+
+        function mostrarTarjetas(divId) {
+            $("div[id^='div']").hide();
+            $("#" + divId).show();
+        }
+    });
+</script>
+
+
