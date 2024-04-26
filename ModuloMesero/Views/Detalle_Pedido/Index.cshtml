@@ -1,7 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Dulce Sabor";
 }
-@model ModuloMesero.Models.Cuenta
+@* @model ModuloMesero.Models.Cuenta *@
+
+
+@{
+    var cuenta = ViewData["Cuenta"] as Cuenta;
+}
+
 
 <!doctype html>
 <html lang="en">
@@ -14,7 +20,7 @@
 <body>
     <header>
         <div class="border-bottom">
-            <h1>Cuenta: @Model.Nombre</h1>
+            <h1>Cuenta: @cuenta.Nombre</h1>
         </div>
         
     </header>
@@ -49,7 +55,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Aquí van los datos de la tabla -->
+                        @foreach (var item in (IEnumerable<dynamic>)ViewData["Detalle_Pedido"])
+                        {
+                            <tr>
+                                <td>@item.nombre</td>
+                                <td>@item.Cantidad</td>
+                                <td>@item.Precio</td>
+                                <td>@item.Estado</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
