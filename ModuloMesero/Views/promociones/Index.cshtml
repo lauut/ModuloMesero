@@ -9,11 +9,13 @@
     @foreach (var promo in (IEnumerable<dynamic>)ViewData["listprom"])
     {
         <div class="col">
-            <div class="card h-100">
+            <div class="card h-100 border-success bg-light">
                 @* <img src="@promo.ImageUrl" class="card-img-top" alt="@promo.Title"> *@
                 <div class="card-body">
                     <h5 class="card-title">@promo.nombre</h5>
                     <p class="card-text"> @promo.descripcion</p>
+                    <p class="card-text">Inicia:  @promo.fechainicio</p>
+                    <p class="card-text"><b>Valido hasta: @promo.fechafin</b></p>
                     <p class="card-text"> $: @promo.precio</p>
                     <button type="submit" class="btn btn-success left">+</button>
                 </div>
