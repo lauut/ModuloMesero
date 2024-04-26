@@ -8,12 +8,12 @@
     @foreach (var combo in (IEnumerable<dynamic>)ViewData["listcombo"])
     {
         <div class="col">
-            <div class="card h-100">
+            <div class="card h-100 border-success bg-light ">
                 @* <img src="@promo.ImageUrl" class="card-img-top" alt="@promo.Title"> *@
                 <div class="card-body">
                     @* <h5 class="card-title">@promo.nombre</h5> *@
-                    <p class="card-text"> @combo.descripcion</p>
-                    <p class="card-text"> $: @combo.precio</p>
+                    <p class="card-text"> <b>@combo.descripcion</b> </p>
+                    <p class="card-text"> $: @combo.precio </p>
                     <button type="submit" class="btn btn-success left">+</button>
                 </div>
             </div>

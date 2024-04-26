@@ -23,7 +23,9 @@ namespace ModuloMesero.Controllers
                                     {
                                         nombre=p.nombre,
                                         descripcion=p.descripcion,
-                                        precio = p.precio
+                                        precio = p.precio,
+                                        fechainicio=p.fecha_inicio,
+                                        fechafin= p.fecha_final
 
                                     }).ToList();
             ViewData["listprom"] = listapromociones;
