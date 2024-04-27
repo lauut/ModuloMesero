@@ -16,8 +16,10 @@ namespace ModuloMesero.Controllers
 
 
         }
-        public IActionResult Index(string tipoPlato)
+        public IActionResult Index(string tipoPlato, int id_mesa)
         {
+
+            ViewData["id"] = id_mesa;
             if (tipoPlato == "Entradas")
             {
                 var listadomenu = (from m in _DulceSaborContext.items_menu
@@ -25,6 +27,7 @@ namespace ModuloMesero.Controllers
                                    where c.categoria == "Entradas"
                                    select new
                                    {
+                                       m.id_item_menu,
                                        m.nombre,
                                        m.descripcion,
                                        m.precio,
@@ -42,6 +45,7 @@ namespace ModuloMesero.Controllers
                                    where c.categoria == "Plato fuerte"
                                    select new
                                    {
+                                       m.id_item_menu,
                                        m.nombre,
                                        m.descripcion,
                                        m.precio,
@@ -59,6 +63,7 @@ namespace ModuloMesero.Controllers
                                    where c.categoria == "Postres"
                                    select new
                                    {
+                                       m.id_item_menu,
                                        m.nombre,
                                        m.descripcion,
                                        m.precio,
@@ -76,6 +81,7 @@ namespace ModuloMesero.Controllers
                                    where c.categoria == "Bebidas"
                                    select new
                                    {
+                                       m.id_item_menu,
                                        m.nombre,
                                        m.descripcion,
                                        m.precio,
@@ -91,6 +97,33 @@ namespace ModuloMesero.Controllers
                 return NotFound(); 
             }
            
+        }
+
+        public IActionResult Añadirpedido(int id_mesa, int id_item_menu, int Cantidad, string? Comentario) 
+        {
+            var Cuenta = _DulceSaborContext.Cuenta.FirstOrDefault(c => c.Id_mesa == id_mesa && c.Estado_cuenta == "Abierta");
+            var Plato = _DulceSaborContext.items_menu.FirstOrDefault(m => m.id_item_menu == id_item_menu);
+            var detalle = _DulceSaborContext.Detalle_Pedido.FirstOrDefault(d => d.Id_cuenta == Cuenta.Id_cuenta);
+
+            Detalle_Pedido nuevoDetallePedido = new Detalle_Pedido();
+
+            nuevoDetallePedido.Id_cuenta= Cuenta.Id_cuenta;
+            nuevoDetallePedido.Id_plato= id_item_menu;
+            nuevoDetallePedido.Cantidad = Cantidad;
+            nuevoDetallePedido.Estado = "Solicitado";
+            nuevoDetallePedido.Tipo_Plato = "M";
+            nuevoDetallePedido.Precio = (decimal)Plato.precio;
+            _DulceSaborContext.Add(nuevoDetallePedido);
+            _DulceSaborContext.SaveChanges();
+
+
+            Comentarios nuevocomentario = new Comentarios();
+            nuevocomentario.id_detallepedido = detalle.Id_DetalleCuenta;
+            nuevocomentario.Comentario = Comentario;
+            _DulceSaborContext.Add(nuevocomentario);
+            _DulceSaborContext.SaveChanges();
+
+            return RedirectToAction("Index", "Detalle_Pedido", new { id_mesa = id_mesa });
         }
         
     }

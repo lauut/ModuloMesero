@@ -4,8 +4,9 @@ namespace ModuloMesero.Controllers
 {
     public class MenuOptionsController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int id_mesa)
         {
+            ViewData["id"] = id_mesa;
             return View();
         }
     }

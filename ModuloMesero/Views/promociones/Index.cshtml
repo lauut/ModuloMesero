@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    var id_mesa = ViewData["id"];
 }
 
 <h3>Promociones:</h3>
@@ -17,7 +18,17 @@
                     <p class="card-text">Inicia:  @promo.fechainicio</p>
                     <p class="card-text"><b>Valido hasta: @promo.fechafin</b></p>
                     <p class="card-text"> $: @promo.precio</p>
-                    <button type="submit" class="btn btn-success left">+</button>
+                    <form asp-area="" asp-controller="items_menu" asp-action="Añadirpedido" asp-route-id_mesa="@id_mesa" asp-route-id_item_menu="@promo.id_promo">
+                        <div class="mb-3">
+                            @Html.Label("lblCantidad", "Cantidad")
+                            @Html.TextBox("Cantidad", "", new { @class = "form-control" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.Label("lblComentario", "Comentario")
+                            @Html.TextArea("Comentario", "", new { @class = "form-control" })
+                        </div>
+                        <button type="submit" class="btn btn-success left"><a>+</a></button>
+                    </form>
                 </div>
             </div>
         </div>

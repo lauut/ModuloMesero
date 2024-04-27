@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    var id_mesa = ViewData["id"];
 }
 <h3>Combos: </h3>
 
@@ -19,7 +20,17 @@
                         @* <h5 class="card-title">@combo.nombre</h5> *@
                         <p class="card-text"> <b>@combo.descripcion</b> </p>
                         <p class="card-text"> $: @combo.precio </p>
-                        <button type="submit" class="btn btn-success left">+</button>
+                        <form asp-area="" asp-controller="items_menu" asp-action="Añadirpedido" asp-route-id_mesa="@id_mesa" asp-route-id_item_menu="@combo.id_combo">
+                            <div class="mb-3">
+                                @Html.Label("lblCantidad", "Cantidad")
+                                @Html.TextBox("Cantidad", "", new { @class = "form-control" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.Label("lblComentario", "Comentario")
+                                @Html.TextArea("Comentario", "", new { @class = "form-control" })
+                            </div>
+                            <button type="submit" class="btn btn-success left"><a>+</a></button>
+                        </form>
                     </div>
                 </div>
             </div>

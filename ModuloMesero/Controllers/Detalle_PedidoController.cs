@@ -24,14 +24,22 @@ namespace ModuloMesero.Controllers
                                      p.nombre,
                                      dp.Cantidad,
                                      dp.Precio,
-                                     dp.Estado
+                                     dp.Estado,
                                  }
                                  ).ToList();
 
 
            ViewData["Detalle_Pedido"] = Detalle_Pedido;
-           
-           return View();
+
+            //var Detalle = _context.Detalle_Pedido.FirstOrDefault(dp => dp.Id_cuenta == Cuenta.Id_cuenta);
+
+            //foreach (var detalle in Detalle_Pedido)
+            //{
+            //    var comentarios = _context.comentarios.Where(c => c.id_detallepedido == Detalle.Id_DetalleCuenta).ToList();
+            //    ViewData["Comentarios-"] = comentarios;
+            //}
+
+            return View();
 
             
            

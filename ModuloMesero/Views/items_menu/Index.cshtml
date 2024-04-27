@@ -3,6 +3,7 @@
 *@
 @{
     var cat = ViewData["categoria"];
+    var id_mesa = ViewData["id"];
 }
 
 <div>
@@ -20,7 +21,18 @@
                     <h5 class="card-title">@item.nombre</h5>
                     <p class="card-text"> <b>@item.descripcion</b> </p>
                     <p class="card-text"> $: @item.precio </p>
-                    <button type="submit" class="btn btn-success left">+</button>
+                    <form asp-area="" asp-controller="items_menu" asp-action="Añadirpedido" asp-route-id_mesa="@id_mesa" asp-route-id_item_menu="@item.id_item_menu">
+                        <div class="mb-3">
+                            @Html.Label("lblCantidad", "Cantidad")
+                            @Html.TextBox("Cantidad", "", new { @class = "form-control" })
+                        </div>
+                        <div class="mb-3">
+                            @Html.Label("lblComentario", "Comentario")
+                            @Html.TextArea("Comentario", "", new { @class = "form-control" })
+                        </div>
+                        <button type="submit" class="btn btn-success left"><a >+</a></button>
+                    </form>
+                    
                 </div>
             </div>
         </div>

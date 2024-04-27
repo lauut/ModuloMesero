@@ -37,7 +37,7 @@
                         font-size: 24px;
                         font-weight: bold;
                         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-                        <a style="text-decoration: none; color: inherit;" asp-area="" asp-controller="MenuOptions" asp-action="Index">Menú</a>
+                        <a style="text-decoration: none; color: inherit;" asp-area="" asp-controller="MenuOptions" asp-action="Index" asp-route-id_mesa="@cuenta.Id_mesa">Menú</a>
                     </div>
                 </div>
                 <div style="position:relative; display:inline-block; margin: 10px">
@@ -46,7 +46,7 @@
                         font-size: 24px;
                         font-weight: bold;
                         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-                        <a style="text-decoration: none; color: inherit;" asp-area="" asp-controller="combos" asp-action="Index">Combos</a>
+                        <a style="text-decoration: none; color: inherit;" asp-area="" asp-controller="combos" asp-action="Index" asp-route-id_mesa="@cuenta.Id_mesa">Combos</a>
                     </div>
                 </div>
                 <div style="position:relative; display:inline-block; margin: 10px">
@@ -55,10 +55,12 @@
                         font-size: 24px;
                         font-weight: bold;
                         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-                        <a style="text-decoration: none; color: inherit;" asp-area="" asp-controller="promociones" asp-action="Index">Promociones</a>
+                        <a style="text-decoration: none; color: inherit;" asp-area="" asp-controller="promociones" asp-action="Index" asp-route-id_mesa="@cuenta.Id_mesa">Promociones</a>
                     </div>
                 </div>
-
+                <div style="position:relative; display:inline-block; margin: 10px">
+                    <button type="button" class="btn btn-success"><a style="text-decoration: none; color: inherit;" asp-area="" asp-controller="Cuenta" asp-action="CerrarCuenta" asp-route-Id_cuenta="@cuenta.Id_cuenta" asp-route-id_mesa="@cuenta.Id_mesa">Cerrar cuenta</a></button>
+                </div>
             </div>
         </div>
 
@@ -73,6 +75,7 @@
                             <th>Cantidad</th>
                             <th>Precio</th>
                             <th>Estado</th>
+                            <th>Comentario</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,6 +86,10 @@
                                 <td>@item.Cantidad</td>
                                 <td>@item.Precio</td>
                                 <td>@item.Estado</td>
+                               @*  @foreach (var comentario in (List<Comentarios>)ViewData["Comentarios-"])
+                                {
+                                    <p>@comentario.Comentario</p>
+                                } *@
                             </tr>
                         }
                     </tbody>
