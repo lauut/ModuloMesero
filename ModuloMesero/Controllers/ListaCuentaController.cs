@@ -25,7 +25,6 @@ namespace ModuloMesero.Controllers
                                     idcuenta = c.Id_cuenta,
                                     nombremesa = m.nombre_mesa,
                                     m.id_mesa
-
                                 }).ToList();
             ViewData["listcuenta"] = listacuentas;
 
