@@ -28,7 +28,6 @@ namespace ModuloMesero.Controllers
                                }).ToList();
             ViewData["listcombo"] = listacombos;
 
-
             return View();
         }
     }
