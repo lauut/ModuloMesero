@@ -6,8 +6,8 @@ namespace ModuloMesero.Models
     {
         [Key]
         public int Id_comentario { get; set; }
-        public int id_detallepedido { get; set; }
-        public string Comentario { get; set; }
+        public int? id_detallepedido { get; set; }
+        public string? Comentario { get; set; }
 
 
     }

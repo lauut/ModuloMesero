@@ -46,8 +46,8 @@ namespace ModuloMesero.Controllers
             Cuenta nuevacuenta = new Cuenta();
 
             nuevacuenta.Id_mesa = id_mesa;
-            nuevacuenta.Nombre = Nombre; // Aquí utilizamos el parámetro Nombre
-            nuevacuenta.Cantidad_Personas = Cantidad_Personas; // Aquí utilizamos el parámetro Cantidad_Personas
+            nuevacuenta.Nombre = Nombre;
+            nuevacuenta.Cantidad_Personas = Cantidad_Personas;
             nuevacuenta.Estado_cuenta = "Abierta";
             nuevacuenta.Fecha_Hora = DateTime.Now;
 
@@ -57,5 +57,21 @@ namespace ModuloMesero.Controllers
             return RedirectToAction("Index", "Detalle_Pedido", new { id_mesa = id_mesa });
         }
 
+        public IActionResult CerrarCuenta(int Id_cuenta, int Id_mesa) 
+        {
+            var mesa = _context.mesas.FirstOrDefault(c => c.id_mesa == Id_mesa);
+            var cuenta = _context.Cuenta.FirstOrDefault(c => c.Id_cuenta == Id_cuenta);
+            if (cuenta != null)
+            {
+                cuenta.Estado_cuenta = "Cerrado";
+                
+                
+
+                mesa.id_estado = 1;
+               
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index", "mesas");
+        }
     }
 }

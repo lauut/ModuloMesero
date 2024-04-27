@@ -11,7 +11,7 @@ namespace ModuloMesero.Models
         public int Cantidad { get; set; }
         public string Estado { get; set; }
         public string Tipo_Plato { get; set; }
-        public double Precio { get; set; }
+        public decimal Precio { get; set; }
 
 
     }
