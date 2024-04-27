@@ -21,3 +21,24 @@
     }
 </div>
 
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @if (ViewData["listcombo"] != null && ((IEnumerable<dynamic>)ViewData["listcombo"]).Any())
+    {
+        var firstCombo = ((IEnumerable<dynamic>)ViewData["listcombo"]).First();
+        <div class="col">
+            <div class="card h-100 border-success bg-light ">
+                @* <img src="@firstCombo.ImageUrl" class="card-img-top" alt="@firstCombo.Title"> *@
+                <div class="card-body">
+                    @* <h5 class="card-title">@firstCombo.nombre</h5> *@
+                    <p class="card-text"> <b>@firstCombo.descripcion</b> </p>
+                    <p class="card-text"> $: @firstCombo.precio </p>
+                    <button type="submit" class="btn btn-success left">+</button>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>No se encontraron combos.</p>
+    }
+</div>
