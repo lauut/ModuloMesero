@@ -4,7 +4,10 @@
 @{
 }
 
-<h3>Cuentas:</h3>
+<div>
+    <h1 class="text-dark" style="text-decoration-thickness:auto">Cuentas:</h1>
+    <hr style="color: black; background-color: black; width:100%;" />
+</div>
 <div class="row row-cols-1 row-cols-md-3 g-4">
     @foreach (var cuenta in (IEnumerable<dynamic>)ViewData["listcuenta"])
     {
@@ -14,9 +17,9 @@
                     <h5 class="card-title">Cuenta</h5>
                     <p class="card-text">Nombre: @cuenta.nombre</p>
                     <p class="card-text">N mesa:  @cuenta.nombremesa</p>
-                    <p class="card-text"><b>Id Cuenta  @cuenta.idcuenta</b></p>
+                    <p class="card-text"><b>Id Cuenta: @cuenta.idcuenta</b></p>
                     <p class="card-text"> Total: </p>
-                    <button type="submit" class="btn btn-success left">Ver pedido</button>
+                    <button type="submit" class="btn btn-success left"><a style="text-decoration: none; color: inherit;" asp-area="" asp-controller="Detalle_Pedido" asp-action="Index" asp-route-id_mesa="@cuenta.id_mesa">Ver pedido</a></button>
                     <button type="submit" class="btn btn-danger left">Cerrar Cuenta</button>
                 </div>
             </div>
